@@ -6,7 +6,7 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* Scrollbar hatane ke liye */
+  overflow: hidden; 
   font-family: 'Share Tech Mono', monospace;
 }
 
@@ -14,9 +14,9 @@ body, html {
 .app-container {
   height: 100vh;
   width: 100vw;
-  background-size: cover;       /* Image poori screen par fit hogi */
+  background-size: cover;       
   background-position: center;
-  background-repeat: no-repeat; /* Image repeat nahi hogi */
+  background-repeat: no-repeat; 
 }
 
 /* --- 3. OVERLAY (Dark Tint) --- */
@@ -81,8 +81,8 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px; /* Elements ke beech gap */
-  flex: 1;   /* Beech ki jagah lega */
+  gap: 50px; 
+  flex: 1;   
 }
 
 /* Center Title & Car */
@@ -108,12 +108,12 @@ body, html {
   justify-content: center;
 }
 
-/* --- App.css mein add/update karo --- */
 
-/* Title ko thoda adjust karte hain taaki "ROAD" fit ho jaye */
+
+
 .cyber-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 3rem; /* Thoda sa chhota kiya taaki fit ho */
+  font-size: 3rem; 
   color: #fff;
   margin: 10px 0;
   text-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
@@ -127,21 +127,19 @@ body, html {
     letter-spacing: 1px;
 }
 
-/* NEW CAR IMAGE STYLING */
-/* --- App.css mein Car wala section replace karo --- */
 
 /* 1. CAR STYLING & ANIMATION SETUP */
 .digital-car-img {
-  width: 300px; /* Car ka size */
+  width: 300px; 
   height: auto;
   .digital-car-img {
   width: 300px;
   height: auto;
   filter: drop-shadow(0 0 20px #00e5ff);
   
-  /* --- YE MAGIC LINE ADD KARO --- */
-  mix-blend-mode: screen; 
-  /* Isse black color transparent ban jayega aur sirf Car ki lights dikhengi */
+
+  mix-blend-mode: screen;
+  
 
   animation: 
     driveIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards,
@@ -151,42 +149,40 @@ body, html {
   /* Glow Effect */
   filter: drop-shadow(0 0 20px #00e5ff); 
 
-  /* Yahan hum 2 animations ek saath laga rahe hain */
-  /* Animation 1: Drive In (1.5 second chalegi) */
-  /* Animation 2: Float (1.5 second rukne ke baad shuru hogi) */
+  
   animation: 
     driveIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards,
     floatCar 3s ease-in-out infinite 1.5s; 
 }
 
-/* 2. KEYFRAMES: Car chal ke kaise aayegi */
+
 @keyframes driveIn {
   0% {
     opacity: 0;
-    /* Screen ke bahar (Left side) se start hogi aur thodi chhoti dikhegi */
+    
     transform: translateX(-120vw) scale(0.8) skewX(-20deg);
   }
   70% {
-    /* Center se thoda aage nikal jayegi (Braking overshoot) */
+    
     transform: translateX(30px) scale(1.05) skewX(10deg); 
   }
   100% {
     opacity: 1;
-    /* Final Position: Center mein stop */
+    
     transform: translateX(0) scale(1) skewX(0deg);
   }
 }
 
-/* 3. KEYFRAMES: Rukne ke baad float karna */
+
 @keyframes floatCar {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); } /* Upar neeche hogi */
+  50% { transform: translateY(-15px); } 
 }
 
-/* Float Animation wahi rahega */
+
 @keyframes floatCar {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); } /* Thoda zyada upar niche karegi */
+  50% { transform: translateY(-15px); } 
 }
 
 @keyframes floatCar {
@@ -284,11 +280,11 @@ body, html {
     linear-gradient(to left, #00ff00 2px, transparent 2px) 100% 100%,
     linear-gradient(to top, #00ff00 2px, transparent 2px) 100% 100%;
   background-repeat: no-repeat;
-  background-size: 20px 20px; /* Corner ka size */
+  background-size: 20px 20px; 
   pointer-events: none;
 }
 
-/* Blinking REC dot */
+
 .video-frame::after {
   content: '● REC';
   position: absolute;
@@ -336,12 +332,12 @@ body, html {
 .hud-metrics {
   display: flex;
   gap: 40px;
-  margin-top: -20px; /* Car ke thoda upar overlap karega */
+  margin-top: -20px; 
   z-index: 10;
 }
 
 .metric-box {
-  background: rgba(0, 229, 255, 0.1); /* Halka blue glass */
+  background: rgba(0, 229, 255, 0.1); 
   border: 1px solid #00e5ff;
   padding: 10px 20px;
   border-radius: 10px;

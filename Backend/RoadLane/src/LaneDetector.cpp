@@ -29,7 +29,7 @@ void runLaneDetection()
 
         cv::Mat original = frame.clone();
         
-        // Downscale for FAST processing (FPS Boost)
+        
         cv::resize(frame, frame, cv::Size(640, 360));
 
         // ================= PREPROCESS =================
@@ -124,7 +124,7 @@ void runLaneDetection()
             deviationPercent = (double)abs(deviation) / (frame.cols / 2) * 100;
 
             // ===== HORIZON CROSSHAIR CALCULATION =====
-            // Multiply by 2 because we will draw this on the 720p (scaled) frame
+
             crossX = ((leftTop.x + rightTop.x) / 2) * 2;
             crossY = ((leftTop.y + rightTop.y) / 2) * 2;
 
@@ -139,21 +139,18 @@ void runLaneDetection()
             cv::addWeighted(fill, 0.3, overlay, 0.7, 0, overlay);
         }
 
-        // ==============================================================
-        //  UI DRAWING SECTION (720p CRISP TEXT & RADAR)
-        // ==============================================================
-        
+
         cv::resize(overlay, overlay, cv::Size(1280, 720));
         
         // 1. Draw Semi-Transparent HUD Box & Radar Box
         cv::Mat hud = overlay.clone();
-        cv::rectangle(hud, cv::Rect(30, 30, 450, 320), cv::Scalar(0, 0, 0), -1); // Extended box for more text
+        cv::rectangle(hud, cv::Rect(30, 30, 450, 320), cv::Scalar(0, 0, 0), -1);
         
         int radarSize = 180;
         cv::Point radarCenter(1280 - radarSize/2 - 30, 30 + radarSize/2);
         cv::rectangle(hud, cv::Rect(1280 - radarSize - 30, 30, radarSize, radarSize), cv::Scalar(0, 20, 0), -1); 
         
-        cv::addWeighted(hud, 0.6, overlay, 0.4, 0, overlay); // Darker HUD for Sci-Fi look
+        cv::addWeighted(hud, 0.6, overlay, 0.4, 0, overlay); 
 
         // 2. Telemetry Text Calculation
         int64 currentTick = cv::getTickCount();
@@ -161,7 +158,7 @@ void runLaneDetection()
         fps = 1.0 / time;
         prevTick = currentTick;
 
-        // Fake Speed for realism (fluctuates between 60-65)
+        // Fake Speed 
         static int speed = 62;
         if (currentTick % 10 == 0) speed = 60 + (rand() % 6);
 
@@ -194,9 +191,7 @@ void runLaneDetection()
                         cv::Point(400 + (smoothAngle > 5 ? -60 : (smoothAngle < -5 ? 60 : 0)), smoothAngle > 5 || smoothAngle < -5 ? 110 : 90), 
                         dirColor, 5, 8, 0, 0.2);
 
-        // ==============================================================
-        //  THE MAGIC STUFF (CROSSHAIR & RADAR)
-        // ==============================================================
+        
 
         // A. RADAR UI (Top Right)
         cv::rectangle(overlay, cv::Rect(1280 - radarSize - 30, 30, radarSize, radarSize), cv::Scalar(0, 255, 0), 2);
