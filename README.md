@@ -13,7 +13,7 @@ A high-performance, full-stack Advanced Driver Assistance System (ADAS). It brid
 
 
 
-
+<video src="R.mp4" controls="controls" width="100%"></video>
 
 ## ⚙️ Architecture
 1. **Frontend (React.js):** Dashboard to initialize the system and view live stats.
