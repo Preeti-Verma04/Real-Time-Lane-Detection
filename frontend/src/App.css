@@ -1,0 +1,366 @@
+/* Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+/* --- 1. GLOBAL RESET --- */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Scrollbar hatane ke liye */
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* --- 2. MAIN CONTAINER --- */
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;       /* Image poori screen par fit hogi */
+  background-position: center;
+  background-repeat: no-repeat; /* Image repeat nahi hogi */
+}
+
+/* --- 3. OVERLAY (Dark Tint) --- */
+.overlay {
+  background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* --- 4. HEADER --- */
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.brand {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.version {
+  font-size: 0.8rem;
+  color: #4caf50;
+  margin-left: 5px;
+}
+
+.status-light {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #555;
+  box-shadow: 0 0 5px #555;
+}
+.indicator.red { background-color: #ff4444; box-shadow: 0 0 10px #ff4444; }
+.indicator.blink-green { 
+  background-color: #00ff00; 
+  box-shadow: 0 0 10px #00ff00;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink { 50% { opacity: 0.5; } }
+
+/* --- 5. CENTER INTERFACE --- */
+.main-interface {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px; /* Elements ke beech gap */
+  flex: 1;   /* Beech ki jagah lega */
+}
+
+/* Center Title & Car */
+.center-display {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cyber-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  color: #fff;
+  margin: 10px 0;
+  text-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+  line-height: 1.1;
+}
+
+/* Car Icon Styling */
+.car-icon-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* --- App.css mein add/update karo --- */
+
+/* Title ko thoda adjust karte hain taaki "ROAD" fit ho jaye */
+.cyber-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem; /* Thoda sa chhota kiya taaki fit ho */
+  color: #fff;
+  margin: 10px 0;
+  text-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+  line-height: 1.1;
+}
+
+.sub-title {
+    margin-top: -5px;
+    color: #00e5ff;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+/* NEW CAR IMAGE STYLING */
+/* --- App.css mein Car wala section replace karo --- */
+
+/* 1. CAR STYLING & ANIMATION SETUP */
+.digital-car-img {
+  width: 300px; /* Car ka size */
+  height: auto;
+  .digital-car-img {
+  width: 300px;
+  height: auto;
+  filter: drop-shadow(0 0 20px #00e5ff);
+  
+  /* --- YE MAGIC LINE ADD KARO --- */
+  mix-blend-mode: screen; 
+  /* Isse black color transparent ban jayega aur sirf Car ki lights dikhengi */
+
+  animation: 
+    driveIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards,
+    floatCar 3s ease-in-out infinite 1.5s; 
+}
+  
+  /* Glow Effect */
+  filter: drop-shadow(0 0 20px #00e5ff); 
+
+  /* Yahan hum 2 animations ek saath laga rahe hain */
+  /* Animation 1: Drive In (1.5 second chalegi) */
+  /* Animation 2: Float (1.5 second rukne ke baad shuru hogi) */
+  animation: 
+    driveIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards,
+    floatCar 3s ease-in-out infinite 1.5s; 
+}
+
+/* 2. KEYFRAMES: Car chal ke kaise aayegi */
+@keyframes driveIn {
+  0% {
+    opacity: 0;
+    /* Screen ke bahar (Left side) se start hogi aur thodi chhoti dikhegi */
+    transform: translateX(-120vw) scale(0.8) skewX(-20deg);
+  }
+  70% {
+    /* Center se thoda aage nikal jayegi (Braking overshoot) */
+    transform: translateX(30px) scale(1.05) skewX(10deg); 
+  }
+  100% {
+    opacity: 1;
+    /* Final Position: Center mein stop */
+    transform: translateX(0) scale(1) skewX(0deg);
+  }
+}
+
+/* 3. KEYFRAMES: Rukne ke baad float karna */
+@keyframes floatCar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); } /* Upar neeche hogi */
+}
+
+/* Float Animation wahi rahega */
+@keyframes floatCar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); } /* Thoda zyada upar niche karegi */
+}
+
+@keyframes floatCar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* --- 6. BUTTONS & RINGS --- */
+.control-group {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hud-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Start Ring */
+.start-ring { border: 2px dashed rgba(76, 175, 80, 0.5); }
+.start-ring.spinning {
+  border-color: #00ff00;
+  border-top-color: transparent;
+  animation: spin 2s linear infinite;
+}
+
+/* Stop Ring */
+.stop-ring { border: 2px solid rgba(244, 67, 54, 0.3); }
+.stop-ring.pulsing {
+  border-color: #ff4444;
+  animation: pulse-red 1.5s infinite;
+}
+
+.btn {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: white;
+  z-index: 2;
+  transition: transform 0.2s;
+}
+
+.start-btn {
+  background: radial-gradient(circle, #2e7d32 0%, #1b5e20 100%);
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.6);
+}
+.start-btn:hover { transform: scale(1.05); }
+
+.stop-btn {
+  background: radial-gradient(circle, #c62828 0%, #b71c1c 100%);
+  box-shadow: 0 0 15px rgba(244, 67, 54, 0.6);
+}
+.stop-btn:hover { transform: scale(1.05); }
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes pulse-red {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.2); opacity: 0; }
+}
+
+/* --- 7. VIDEO BOX --- */
+.video-frame {
+  margin-top: 15px;
+  width: 300px;
+  height: 170px;
+  border: none;
+  background: rgba(0, 20, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00e5ff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+}
+
+.video-frame::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: 
+    linear-gradient(to right, #00ff00 2px, transparent 2px) 0 0,
+    linear-gradient(to bottom, #00ff00 2px, transparent 2px) 0 0,
+    linear-gradient(to left, #00ff00 2px, transparent 2px) 100% 100%,
+    linear-gradient(to top, #00ff00 2px, transparent 2px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px; /* Corner ka size */
+  pointer-events: none;
+}
+
+/* Blinking REC dot */
+.video-frame::after {
+  content: '● REC';
+  position: absolute;
+  top: 10px; right: 15px;
+  color: red;
+  font-weight: bold;
+  font-size: 0.8rem;
+  animation: blinkRec 1s infinite;
+}
+
+@keyframes blinkRec { 50% { opacity: 0; } }
+
+.scan-line {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 3px;
+  background: rgba(0, 255, 0, 0.8);
+  animation: scan 2s linear infinite;
+}
+@keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+
+/* --- 8. LOGS (BOTTOM) --- */
+.terminal-box {
+  background: rgba(0, 0, 0, 0.9);
+  border-top: 2px solid #4caf50;
+  height: 150px;
+  font-family: 'Share Tech Mono', monospace;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-header {
+  background: #111;
+  color: #4caf50;
+  padding: 5px 20px;
+  font-size: 0.9rem;
+}
+
+.logs-content {
+  padding: 10px 20px;
+  overflow-y: auto;
+  color: #00ff00;
+  font-size: 0.9rem;
+}
+
+.hud-metrics {
+  display: flex;
+  gap: 40px;
+  margin-top: -20px; /* Car ke thoda upar overlap karega */
+  z-index: 10;
+}
+
+.metric-box {
+  background: rgba(0, 229, 255, 0.1); /* Halka blue glass */
+  border: 1px solid #00e5ff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.metric-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #aaa;
+  letter-spacing: 2px;
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px #00e5ff;
+}
+
+.unit { font-size: 1rem; color: #00e5ff; }
